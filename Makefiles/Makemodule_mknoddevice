@@ -1,0 +1,25 @@
+# rename it as "Makefile" before make
+obj-m += lkm_example.o
+obj-m += lkm_example2.o
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+test:
+	# We put a — in front of the rmmod command to tell make to ignore
+	-sudo rmmod lkm_example.ko
+	-sudo rmmod lkm_example2.ko
+	sudo dmesg -C
+	sudo insmod lkm_example.ko
+	sudo insmod lkm_example2.ko
+	#sudo rmmod lkm_example.ko
+	#sudo rmmod lkm_example2.ko
+	dmesg
+remove:
+	sudo rmmod lkm_example
+	sudo rmmod lkm_example2
+makedevice:
+	sudo mknod /dev/lkm_example c [MAJOR] 0
+removedevice:
+	sudo rm /dev/lkm_example
+	sudo rmmod lkm_example2
