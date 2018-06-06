@@ -28,3 +28,11 @@
 [How Double-Fetch Situations turn into DoubleFetch Vulnerabilities: A Study of Double Fetches in the Linux Kernel (Chinese Edition)](https://www.secspace.com/view-ff3bbe863b544a929f96110e7b8992c8-e5cf621eacdb49b3b35b71a20e0ce9be.html)
 
 [CVE-2016-6516](http://www.freebuf.com/articles/system/156485.html)
+
+### gdb related
+
+set remote 1234
+
+ser remote /dev/ttyS1
+
+add-symbol-file <.ko file> <base addr>
